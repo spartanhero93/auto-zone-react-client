@@ -1,19 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import Products from './products.json'
 import { loadAllProducts } from './store/reducer'
-
-const size = {
-  xs: '400px',
-  sm: '768px',
-  lg: '1200px'
-}
-const device = {
-  xs: `(min-width: ${size.xs})`,
-  sm: `(min-width: ${size.sm})`,
-  lg: `(min-width: ${size.lg})`
-}
 
 const Button = styled.button`
   color: antiquewhite;
@@ -107,7 +96,14 @@ function App () {
     dispatch(loadAllProducts)
   })
 
-  //const [addItem, handleItem] = useState({});
+  const [addItem, handleItem] = useState({});
+
+  function addItemToCart({partNumber, pricing}) {
+    console.log({
+      partNo: `#${partNumber}`,
+      price: pricing.list 
+    })
+  }
 
   return (
     <Container>
@@ -124,7 +120,7 @@ function App () {
             </ItemDetails>
           </Item>
 
-          <Button>Add to Cart</Button>
+          <Button onClick={() => addItemToCart(i)}>Add to Cart</Button>
         </Wrapper>
       ))}
     </Container>
