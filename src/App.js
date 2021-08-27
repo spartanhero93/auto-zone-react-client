@@ -1,23 +1,38 @@
-import { useEffect, useState } from "react";
-import {useSelector, useDispatch} from 'react-redux'
+import { useEffect } from "react";
+import { useDispatch} from 'react-redux'
 import Products from "./products.json";
+import { loadAllProducts, addProduct } from './store/reducer'
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch()
-  }, {});
+    dispatch(loadAllProducts)
+  }, []);
 
-  const [addItem, handleItem] = useState({});
+  //const [addItem, handleItem] = useState({});
 
   return (
     <div>
-      <p>
-        <b>Start Writing code here.</b>
         {Products.map((i) => (
-          <div>{i.brandName}</div>
+          <div>
+
+            <div style={{display: 'flex;'}} >
+              <div>
+                <img src={i.image} alt={i.productDescription} />
+              </div>
+              <div>
+                {i.productDescription}
+                <div>PartNo: <b>{i.partNumber}</b></div>
+                <span>{i.pricing.list}</span>
+              </div>
+            </div>
+            <div>
+              <button>Add to Cart</button>
+            </div>
+
+
+          </div>
         ))}
-      </p>
     </div>
   );
 }
