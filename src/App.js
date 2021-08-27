@@ -23,7 +23,6 @@ const Button = styled.button`
   padding: 0.5rem 2.5rem;
   width: 150px;
   white-space: nowrap;
-  margin: 0 1rem;
   font-size: 16px;
   position: relative;
   bottom: 40px;
@@ -45,7 +44,8 @@ const Wrapper = styled.div`
   display: flex;
   border-bottom: 1px solid gray;
   flex-direction: column;
-  padding: 0 1rem;
+  padding: 1rem 1rem 0 ;
+  
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
@@ -72,23 +72,27 @@ const ItemDetails = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
-  line-height: 25px;
   font-size: 18px;
 
   @media only screen and (max-width: 600px) {
     font-size: 16px;
   }
+
+  div {
+    margin-top: 1rem;
+  }
+
   span {
     width: 50px;
     position: relative;
-    top: 30px;
+    top: 25px;
     left: 300px;
     color: #c03;
 
     @media only screen and (max-width: 600px) {
       font-size: 16px;
       position: relative;
-      top: -25px;
+      top: -20px;
       left: 180px;
     }
     @media only screen and (max-width: 400px) {
