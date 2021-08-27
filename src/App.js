@@ -4,36 +4,97 @@ import styled from 'styled-components'
 import Products from './products.json'
 import { loadAllProducts } from './store/reducer'
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`
-
-const Wrapper = styled.div`
-  display: flex;
-  button: {
-    padding: 4rem;
-  }
-`
-
-const ProductImage = styled.img`
-  margin: 1rem; 
-  height: 125px;
-  width: 125px;
-`
-
-const ItemDetails = styled.div`
-padding: .rem 0;
-font-size: 18px;
-font-weight: 600;
-`
+const size = {
+  xs: '400px',
+  sm: '768px',
+  lg: '1200px'
+}
+const device = {
+  xs: `(min-width: ${size.xs})`,
+  sm: `(min-width: ${size.sm})`,
+  lg: `(min-width: ${size.lg})`
+}
 
 const Button = styled.button`
   color: antiquewhite;
   background-color: #c03;
-  padding: 0.3rem 1.5rem;
   border: none;
+  align-self: flex-end;
+  padding: 0.5rem 2.5rem;
+  width: 150px;
+  white-space: nowrap;
+  margin: 0 1rem;
+  font-size: 16px;
+  position: relative;
+  bottom: 40px;
+
+  @media only screen and (max-width: 600px) {
+    align-self: center;
+    width: 95%;
+    bottom: 10px;
+   
+  }
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const Wrapper = styled.div`
+  display: flex;
+  border-bottom: 1px solid gray;
+  flex-direction: column;
+  padding: 0 1rem;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    padding-bottom: 15px;
+  }
+`
+
+const Item = styled.div`
+  display: flex;
+  
+
+  img {
+    margin: 1rem;
+    height: 125px;
+    width: 125px;
+
+    @media only screen and (max-width: 600px) {
+      height: 75px;
+      width: 75px;
+    }
+  }
+`
+const ItemDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  line-height: 25px;
+  font-size: 18px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 16px;
+  }
+  span {
+    width: 50px;
+    position: relative;
+    top: 30px;
+    left: 300px;
+    color: #c03;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 16px;
+      position: relative;
+      top: -25px;
+      left: 180px;
+    }
+    @media only screen and (max-width: 400px) {
+      left: 140px;
+    }
+  }
 `
 
 function App () {
@@ -48,17 +109,18 @@ function App () {
     <Container>
       {Products.map(i => (
         <Wrapper key={i.partNumber}>
-          <ProductImage src={i.image} alt={i.productDescription}/>
-          <ItemDetails>
-            {i.productDescription}
-            <div>
-              PartNo: <b>{i.partNumber}</b>
-            </div>
-            <span>{i.pricing.list}</span>
-          </ItemDetails>
-          <div>
-            <Button>Add to Cart</Button>
-          </div>
+          <Item>
+            <img src={i.image} alt={i.productDescription} />
+            <ItemDetails>
+              <b>{i.productDescription}</b>
+              <div>
+                PartNo: <b>#{i.partNumber}</b>
+              </div>
+              <span><b>{i.pricing.list}</b></span>
+            </ItemDetails>
+          </Item>
+
+          <Button>Add to Cart</Button>
         </Wrapper>
       ))}
     </Container>
