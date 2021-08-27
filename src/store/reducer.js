@@ -3,12 +3,12 @@ import products from '../products.json'
 
 const initialState = {
   products,
-  selectedItem: {
-    partNo: '',
-    price: ''
-  }
 }
 
+/**
+ * @description: creates a slice of one particular data set, in this case products,
+ * all reducers are associated with the products slice
+ */
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
