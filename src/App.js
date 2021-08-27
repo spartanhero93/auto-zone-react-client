@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import Products from './products.json'
-import { loadAllProducts } from './store/reducer'
+import { addProduct, loadAllProducts } from './store/reducer'
 
 const Button = styled.button`
   color: antiquewhite;
@@ -96,15 +96,6 @@ function App () {
     dispatch(loadAllProducts)
   })
 
-  const [addItem, handleItem] = useState({});
-
-  function addItemToCart({partNumber, pricing}) {
-    console.log({
-      partNo: `#${partNumber}`,
-      price: pricing.list 
-    })
-  }
-
   return (
     <Container>
       {Products.map(i => (
@@ -120,7 +111,7 @@ function App () {
             </ItemDetails>
           </Item>
 
-          <Button onClick={() => addItemToCart(i)}>Add to Cart</Button>
+          <Button onClick={() => dispatch(addProduct(i))}>Add to Cart</Button>
         </Wrapper>
       ))}
     </Container>

@@ -15,8 +15,12 @@ export const productsSlice = createSlice({
   reducers: {
     loadAllProducts: state => state,
     addProduct: (state, action) => {
-      state += action.payload 
-    }
+      const itemInfo = {
+        partNo: `#${action.payload.partNumber}`,
+        price: action.payload.pricing.list
+      }
+      console.log(itemInfo)
+    },
   }
 })
 
