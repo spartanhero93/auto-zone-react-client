@@ -1,7 +1,6 @@
 {
   "name": "client",
-  "homepage": "https://spartanhero93.github.io/autozone-react-assesment",
-  "version": "0.1.0",
+  "homepage": "https://spartanhero93.github.io/auto-zone-react-client",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
