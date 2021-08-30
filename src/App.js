@@ -15,7 +15,7 @@ function App () {
    */
   useEffect(() => {
     dispatch(loadAllProducts)
-  })
+  }, [dispatch])
 
   return (
     <Container>
